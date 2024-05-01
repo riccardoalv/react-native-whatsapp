@@ -1,19 +1,14 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import { ChatIcon, CommunitiesIcon, UpdatesIcon } from "../../assets/images/whatsapp/icons"
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -25,33 +20,70 @@ export default function TabLayout() {
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
+        tabBarActiveTintColor: "black",
+        tabBarStyle: {
+          height: 80,
+          paddingBottom: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontFamily: "PTSansBold"
+        },
       }}>
       <Tabs.Screen
-        name="index"
+        name="chats"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'Chats',
+          tabBarIcon: ({ focused }) => <ChatIcon
+            width={60}
+            height={28}
+            style={{
+              color: focused ? "#185F3F" : "#14171B",
+              borderRadius: 50,
+              backgroundColor: focused ? "#D1FDD6" : "white",
+            }}
+          />,
+          headerTitle: "WhatsApp",
+          headerTitleStyle: {
+            color: "#0CA996"
+          }
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="updates"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Updates',
+          tabBarIcon: ({ focused }) => <UpdatesIcon
+            width={60}
+            height={28}
+            style={{
+              color: focused ? "#185F3F" : "#14171B",
+              borderRadius: 50,
+              backgroundColor: focused ? "#D1FDD6" : "white",
+            }}
+          />,
+        }}
+      />
+      <Tabs.Screen
+        name="communities"
+        options={{
+          title: 'Communities',
+          tabBarIcon: ({ focused }) => <CommunitiesIcon
+            width={60}
+            height={28}
+            style={{
+              color: focused ? "#185F3F" : "#14171B",
+              borderRadius: 50,
+              backgroundColor: focused ? "#D1FDD6" : "white",
+            }}
+          />
+          ,
+        }}
+      />
+      <Tabs.Screen
+        name="calls"
+        options={{
+          title: 'Calls',
         }}
       />
     </Tabs>
