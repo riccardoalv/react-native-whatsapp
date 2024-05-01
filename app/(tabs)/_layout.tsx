@@ -2,7 +2,7 @@ import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons  } from '@expo/vector-icons';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -29,6 +29,15 @@ export default function TabLayout() {
           fontSize: 14,
           fontFamily: "PTSansBold"
         },
+        headerShadowVisible: true,
+        headerStyle: {
+          shadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          shadowColor: 'black',
+          elevation: 1,
+        },
       }}>
       <Tabs.Screen
         name="chats"
@@ -44,8 +53,17 @@ export default function TabLayout() {
             }}
           />,
           headerTitle: "WhatsApp",
+          headerRight: () => <View
+            style={{
+              flexDirection: "row",
+            }}>
+            <MaterialCommunityIcons style={{marginHorizontal:10}} name="camera-outline" size={24} color="black" />
+            <MaterialIcons name="search" style={{marginHorizontal:10}} size={24} color="black" />
+            <MaterialCommunityIcons name="dots-vertical" style={{marginHorizontal:10}} size={24} color="black" />
+          </View>,
           headerTitleStyle: {
-            color: "#0CA996"
+            color: "#1DAA5C",
+            fontSize: 25,
           }
         }}
       />
