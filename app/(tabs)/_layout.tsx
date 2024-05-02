@@ -1,29 +1,26 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable, Text, View } from 'react-native';
-import { MaterialCommunityIcons, MaterialIcons  } from '@expo/vector-icons';
+import { Pressable, StyleSheet, Text, View, useColorScheme } from 'react-native';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
 import { ChatIcon, CommunitiesIcon, UpdatesIcon } from "../../assets/images/whatsapp/icons"
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const theme = Colors[colorScheme ?? "dark"]
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-        tabBarActiveTintColor: "black",
+        tabBarActiveTintColor: theme.tabBar.activeTintColor,
         tabBarStyle: {
           height: 80,
           paddingBottom: 10,
+          backgroundColor: theme.background
         },
         tabBarLabelStyle: {
           fontSize: 14,
@@ -35,21 +32,22 @@ export default function TabLayout() {
             width: 0,
             height: 1,
           },
-          shadowColor: 'black',
+          shadowColor: theme.shadowColor,
           elevation: 1,
+          backgroundColor: theme.background
         },
       }}>
       <Tabs.Screen
-        name="chats"
+        name="index"
         options={{
           title: 'Chats',
           tabBarIcon: ({ focused }) => <ChatIcon
             width={60}
             height={28}
             style={{
-              color: focused ? "#185F3F" : "#14171B",
+              color: focused ? theme.tabBar.iconFocused : theme.tabBar.icon,
+              backgroundColor: focused ? theme.tabBar.backgroundFocused : theme.tabBar.background,
               borderRadius: 50,
-              backgroundColor: focused ? "#D1FDD6" : "white",
             }}
           />,
           headerTitle: "WhatsApp",
@@ -57,12 +55,12 @@ export default function TabLayout() {
             style={{
               flexDirection: "row",
             }}>
-            <MaterialCommunityIcons style={{marginHorizontal:10}} name="camera-outline" size={24} color="black" />
-            <MaterialIcons name="search" style={{marginHorizontal:10}} size={24} color="black" />
-            <MaterialCommunityIcons name="dots-vertical" style={{marginHorizontal:10}} size={24} color="black" />
+            <MaterialCommunityIcons style={{ marginHorizontal: 10 }} name="camera-outline" size={24} color={theme.header.icon} />
+            <MaterialIcons name="search" style={{ marginHorizontal: 10 }} size={24} color={theme.header.icon} />
+            <MaterialCommunityIcons name="dots-vertical" style={{ marginHorizontal: 10 }} size={24} color={theme.header.icon} />
           </View>,
           headerTitleStyle: {
-            color: "#1DAA5C",
+            color: theme.header.title,
             fontSize: 25,
           }
         }}
@@ -75,9 +73,10 @@ export default function TabLayout() {
             width={60}
             height={28}
             style={{
-              color: focused ? "#185F3F" : "#14171B",
+              color: focused ? theme.tabBar.iconFocused : theme.tabBar.icon,
+              backgroundColor: focused ? theme.tabBar.backgroundFocused : theme.tabBar.background,
               borderRadius: 50,
-              backgroundColor: focused ? "#D1FDD6" : "white",
+              padding: 2
             }}
           />,
         }}
@@ -90,9 +89,10 @@ export default function TabLayout() {
             width={60}
             height={28}
             style={{
-              color: focused ? "#185F3F" : "#14171B",
+              color: focused ? theme.tabBar.iconFocused : theme.tabBar.icon,
+              backgroundColor: focused ? theme.tabBar.backgroundFocused : theme.tabBar.background,
               borderRadius: 50,
-              backgroundColor: focused ? "#D1FDD6" : "white",
+              padding: 2
             }}
           />
           ,
@@ -102,6 +102,16 @@ export default function TabLayout() {
         name="calls"
         options={{
           title: 'Calls',
+          tabBarIcon: ({ focused }) => <MaterialIcons 
+            name="call" 
+            size={24}
+            style={{
+              color: focused ? theme.tabBar.iconFocused : theme.tabBar.icon,
+              backgroundColor: focused ? theme.tabBar.backgroundFocused : theme.tabBar.background,
+              borderRadius: 50,
+              paddingHorizontal: 20,
+              paddingVertical: 2,
+          }}/>
         }}
       />
     </Tabs>
