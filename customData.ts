@@ -34,4 +34,15 @@ const archivedMessages = [
   { id: 15, name: "Computacao 2023", lastMessage: "asdfadsfasdfdas", silenced: true, pinned: false, unreadNotifications: 102, hour: "10:22", profileImage: require("./assets/images/whatsapp/profiles/computacao.jpg") },
 ]
 
-export default chatData
+const exampleChat = [
+  { id: 1, hour: "10:32", system: true, fromMe: true, read: true, received: true, text: "Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more." },
+  { id: 2, hour: "10:32", system: true, fromMe: false, read: true, received: true, text: "Today" },
+  { id: 3, hour: "10:32", system: false, fromMe: true, read: true, received: true, text: "pensou no que eu falei?" },
+  { id: 4, hour: "10:32", system: false, fromMe: false, read: true, received: true, text: "Sim" },
+  { id: 5, hour: "10:32", system: false, fromMe: false, read: true, received: true, text: "Sim, eu vou largar a Giullia e ficar com voce" },
+  { id: 6, hour: "10:32", system: false, fromMe: true, read: true, received: true, text: "eu te amo" },
+  { id: 7, hour: "10:32", system: false, fromMe: false, read: true, received: true, text: "eu tbm" },
+]
+
+
+export { chatData, archivedMessages, exampleChat }
