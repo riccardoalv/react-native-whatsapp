@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Dispatch, SetStateAction } from 'react';
 import { ChatIcon } from '@/assets/images/whatsapp/icons';
+import { useRouter } from 'expo-router';
 
 interface UserModalProps {
   user: any
@@ -13,6 +14,8 @@ interface UserModalProps {
 
 
 export default function UserModal({ user, modalVisible, setModalVisible }: UserModalProps) {
+  const router = useRouter();
+
   return (
     <Modal
       animationType="fade"
@@ -53,7 +56,12 @@ export default function UserModal({ user, modalVisible, setModalVisible }: UserM
                 padding: 10,
                 paddingHorizontal: 20,
               }}>
-              <TouchableOpacity><ChatIcon width={28} color="green" /></TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVisible(false)
+                  router.push(`/chat/${user.id}`)
+                }}
+              ><ChatIcon width={28} color="green" /></TouchableOpacity>
               <TouchableOpacity><MaterialIcons name="call" size={28} color="green" /></TouchableOpacity>
               <TouchableOpacity><MaterialCommunityIcons name="video-outline" size={28} color="green" /></TouchableOpacity>
               <TouchableOpacity><MaterialIcons name="info-outline" size={28} color="green" /></TouchableOpacity>
