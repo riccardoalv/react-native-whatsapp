@@ -1,10 +1,12 @@
-import { Modal, TouchableOpacity, ImageBackground, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { Modal, TouchableOpacity, ImageBackground, TouchableWithoutFeedback, StyleSheet, useColorScheme } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Dispatch, SetStateAction } from 'react';
 import { ChatIcon } from '@/assets/images/whatsapp/icons';
 import { useRouter } from 'expo-router';
+
+import Colors from '@/constants/Colors';
 
 interface UserModalProps {
   user: any
@@ -15,6 +17,10 @@ interface UserModalProps {
 
 export default function UserModal({ user, modalVisible, setModalVisible }: UserModalProps) {
   const router = useRouter();
+
+  const colorScheme = useColorScheme();
+
+  const theme = Colors[colorScheme ?? "dark"];
 
   return (
     <Modal
@@ -61,10 +67,14 @@ export default function UserModal({ user, modalVisible, setModalVisible }: UserM
                   setModalVisible(false)
                   router.push(`/chat/${user.id}`)
                 }}
-              ><ChatIcon width={28} color="green" /></TouchableOpacity>
-              <TouchableOpacity><MaterialIcons name="call" size={28} color="green" /></TouchableOpacity>
-              <TouchableOpacity><MaterialCommunityIcons name="video-outline" size={28} color="green" /></TouchableOpacity>
-              <TouchableOpacity><MaterialIcons name="info-outline" size={28} color="green" /></TouchableOpacity>
+              ><ChatIcon width={28} color={theme.green} /></TouchableOpacity>
+              <TouchableOpacity><MaterialIcons name="call" size={28} color={theme.green} /></TouchableOpacity>
+              <TouchableOpacity><MaterialCommunityIcons name="video-outline" size={28} color={theme.green} /></TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  router.push(`/description/${user.id}`)
+                }}
+              ><MaterialIcons name="info-outline" size={28} color="green" /></TouchableOpacity>
             </View>
           </View>
         </TouchableWithoutFeedback>
