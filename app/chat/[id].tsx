@@ -1,6 +1,6 @@
 import { FlatList, Image, ImageBackground, StyleSheet, TextInput, TouchableOpacity, useColorScheme } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { Stack, useLocalSearchParams, useNavigation } from 'expo-router';
+import { Stack, useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 
 import { exampleChat, chatData } from '@/customData';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -12,14 +12,12 @@ import Colors from '@/constants/Colors';
 
 export default function ChatScreen() {
 
+  const router = useRouter();
+
   const colorScheme = useColorScheme()
   const theme = Colors[colorScheme ?? "dark"];
 
   const navigation = useNavigation();
-
-  const handleGoBack = () => {
-    navigation.goBack();
-  };
 
   const params = useLocalSearchParams()
 
@@ -46,14 +44,21 @@ export default function ChatScreen() {
               alignItems: 'center',
               width: "100%",
             }}>
-              <TouchableOpacity onPress={handleGoBack} style={{ paddingRight: 12 }}>
+              <TouchableOpacity onPress={() => {
+                navigation.goBack()
+              }} style={{ paddingRight: 12 }}>
+
                 <MaterialIcons name="arrow-back" size={24} color={theme.tabBar.icon} />
               </TouchableOpacity>
-              <TouchableOpacity style={{
-                flexDirection: "row",
-                alignItems: "center",
-                width: "50%",
-              }}>
+              <TouchableOpacity
+                onPress={() => {
+                  router.push(`/description/${params.id}`)
+                }}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  width: "50%",
+                }}>
                 <ProfileImage image={chat?.profileImage} size={38} />
                 <Text style={{
                   fontSize: 18,
