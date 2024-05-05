@@ -74,7 +74,7 @@ export default function UserModal({ user, modalVisible, setModalVisible }: UserM
                 onPress={() => {
                   router.push(`/description/${user.id}`)
                 }}
-              ><MaterialIcons name="info-outline" size={28} color="green" /></TouchableOpacity>
+              ><MaterialIcons name="info-outline" size={28} color={theme.green} /></TouchableOpacity>
             </View>
           </View>
         </TouchableWithoutFeedback>
