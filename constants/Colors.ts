@@ -72,7 +72,7 @@ export default {
     },
     button: {
       border: "#232A32",
-    }
+    },
+    sendIconColor: "black",
   },
-  sendIconColor: "black",
 };
