@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, useColorScheme } from 'react-native';
+import { StyleSheet, TouchableOpacity, TextInput, useColorScheme } from 'react-native';
 import { View } from '@/components/Themed';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -13,13 +13,14 @@ export default function TextInputBar() {
       style={styles.textInput} >
       <View
         style={{
+          flex: 2,
           flexDirection: "row",
           alignItems: "center"
         }}>
         <MaterialCommunityIcons name="emoticon-happy-outline" size={24} color={theme.lightGrey} />
         <TextInput style={{
+          flex: 1,
           marginLeft: 5,
-          width: 200,
           fontSize: 17,
           fontWeight: "400",
           color: theme.text,
@@ -30,11 +31,37 @@ export default function TextInputBar() {
       <View style={{
         flexDirection: "row",
       }}>
-        <MaterialCommunityIcons name="paperclip" size={24} color={theme.lightGrey} />
-        <MaterialCommunityIcons style={{ marginLeft: 20 }} name="camera-outline" size={24} color={theme.lightGrey} />
+        <TouchableOpacity>
+          <MaterialCommunityIcons
+            name="paperclip"
+            size={24}
+            color={theme.lightGrey}
+            style={{
+              paddingHorizontal: 10,
+            }}
+          />
+        </TouchableOpacity>
+        <MaterialCommunityIcons
+          name="camera-outline"
+          size={24}
+          color={theme.lightGrey}
+          style={{
+            paddingHorizontal: 10,
+          }}
+        />
       </View>
     </View>
-    <View style={{ backgroundColor: theme.green, width: 50, height: 50, borderRadius: 25, justifyContent: "center", alignItems: "center", marginHorizontal: 4, elevation: 2 }}>
+    <View style={{
+      backgroundColor: theme.green,
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      justifyContent: "center",
+      alignItems: "center",
+      marginHorizontal: 4,
+      elevation: 2,
+      flex: 1,
+    }}>
       <MaterialIcons name="mic" size={24} color="white" />
     </View>
   </View>
@@ -43,16 +70,18 @@ export default function TextInputBar() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     marginBottom: 10,
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   },
   textInput: {
+    flex: 7,
     flexDirection: "row",
     elevation: 1,
     padding: 8,
     borderRadius: 40,
     alignItems: "center",
+    justifyContent: "space-between"
   },
 });
