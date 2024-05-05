@@ -31,7 +31,11 @@ export default {
       background: "white",
       textColor: "black",
       readColor: "#0995CB",
-    }
+    },
+    button: {
+      border: "#E7E7E7",
+    },
+    sendIconColor: "white",
   },
   dark: {
     text: '#fff',
@@ -65,6 +69,10 @@ export default {
       background: "#1F2C34",
       textColor: "white",
       readColor: "#0995CB",
+    },
+    button: {
+      border: "#232A32",
     }
   },
+  sendIconColor: "black",
 };

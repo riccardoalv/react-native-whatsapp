@@ -3,10 +3,14 @@ import { View } from '@/components/Themed';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import { useRef, useState } from 'react';
+import PaperPlaneIcon from '@/assets/images/whatsapp/icons/PaperPlane';
 
 export default function TextInputBar() {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme ?? "dark"]
+
+  const [value, setValue] = useState('')
 
   return <View style={styles.container}>
     <View
@@ -26,6 +30,10 @@ export default function TextInputBar() {
           color: theme.text,
         }} placeholder="Message"
           placeholderTextColor={theme.lightGrey}
+          onChangeText={(text) => {
+            setValue(text)
+          }}
+          value={value}
         />
       </View>
       <View style={{
@@ -62,7 +70,11 @@ export default function TextInputBar() {
       elevation: 2,
       flex: 1,
     }}>
-      <MaterialIcons name="mic" size={24} color="white" />
+      {String(value).trim() !== '' ? (
+        <PaperPlaneIcon color={theme.sendIconColor} />
+      ) : (
+        <MaterialIcons name="mic" size={24} color={theme.sendIconColor} />
+      )}
     </View>
   </View>
 }
