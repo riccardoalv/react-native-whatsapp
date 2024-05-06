@@ -5,6 +5,8 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import * as SystemUI from 'expo-system-ui';
+import { MenuProvider } from 'react-native-popup-menu';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -20,10 +22,10 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+
+  SystemUI.setBackgroundColorAsync("transparent");
+
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    PTSans: require('../assets/fonts/PTSans-Regular.ttf'),
-    PTSansBold: require('../assets/fonts/PTSans-Bold.ttf'),
     ...FontAwesome.font,
   });
 
@@ -50,9 +52,11 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <MenuProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </MenuProvider>
     </ThemeProvider>
   );
 }
