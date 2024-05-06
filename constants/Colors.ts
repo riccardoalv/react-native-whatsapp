@@ -74,5 +74,8 @@ export default {
       border: "#232A32",
     },
     sendIconColor: "black",
+    popupMenu: {
+      background: "#121B22",
+    },
   },
 };
