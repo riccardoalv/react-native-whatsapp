@@ -7,6 +7,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import ProfileImage from '@/components/ProfileImage';
 import Colors from '@/constants/Colors';
+import ThreeDotsMenu from '@/components/ThreeDotsMenu';
+import { MenuOption } from 'react-native-popup-menu';
+import { menuOptions } from '@/styles/threeDots/menuOption';
 
 export default function DescriptionScreen() {
   const defaultNumberPreview = 10;
@@ -34,11 +37,16 @@ export default function DescriptionScreen() {
               flexDirection: "row",
               alignItems: "center"
             }}>
-              <TouchableOpacity><MaterialCommunityIcons name="dots-vertical" size={24} color={theme.tabBar.icon} /></TouchableOpacity>
+              <ThreeDotsMenu>
+                <MenuOption text="Share" customStyles={menuOptions} />
+                <MenuOption text="Edit" customStyles={menuOptions} />
+                <MenuOption text="View in address boook" customStyles={menuOptions} />
+                <MenuOption text="Verify security code" customStyles={menuOptions} />
+              </ThreeDotsMenu>
             </View>
           ),
           headerStyle: {
-          backgroundColor: theme.background,
+            backgroundColor: theme.background,
           }
         }}
       />
@@ -84,21 +92,21 @@ export default function DescriptionScreen() {
         </TouchableOpacity>
       </View>
       {user?.description ? (
-      <View
-        style={{
-          marginVertical: 10,
-          elevation: 1,
-          justifyContent: "center",
-        }}
-      >
-        <Text
+        <View
           style={{
-            fontSize: 18,
-            marginHorizontal: 10,
-            padding: 20,
+            marginVertical: 10,
+            elevation: 1,
+            justifyContent: "center",
           }}
-        >{user?.description}</Text>
-      </View>
+        >
+          <Text
+            style={{
+              fontSize: 18,
+              marginHorizontal: 10,
+              padding: 20,
+            }}
+          >{user?.description}</Text>
+        </View>
       ) : ""}
       <View>
         <View style={{
