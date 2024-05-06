@@ -2,14 +2,14 @@ import { Text, View } from '@/components/Themed';
 import { ReadIcon } from '@/assets/images/whatsapp/icons';
 import { Image, StyleSheet, useColorScheme } from 'react-native';
 import Colors from '@/constants/Colors';
-import { exampleChat } from '@/customData';
 
 interface MessageProps {
   message: any
   index: number
+  data: Array<Object>,
 }
 
-export default function Message({ message, index }: MessageProps) {
+export default function Message({ message, index, data }: MessageProps) {
 
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme ?? "dark"];
@@ -24,7 +24,7 @@ export default function Message({ message, index }: MessageProps) {
       style={{
         alignItems: message.system ? "center" : message.fromMe ? "flex-end" : "flex-start",
         backgroundColor: "transparent",
-        marginBottom: index === exampleChat.length - 1 ? 70 : 8,
+        marginBottom: index === data.length - 1 ? 70 : 8,
       }}
     >
       <View

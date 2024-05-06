@@ -6,11 +6,19 @@ import Colors from '@/constants/Colors';
 import { useRef, useState } from 'react';
 import PaperPlaneIcon from '@/assets/images/whatsapp/icons/PaperPlane';
 
-export default function TextInputBar() {
+interface TextInputBarProps {
+  data: Array<Object>,
+  setData: any,
+}
+
+export default function TextInputBar({data, setData}: TextInputBarProps) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme ?? "dark"]
 
   const [value, setValue] = useState('')
+
+  const [last, setLast] = useState(data.slice(-1))
+
 
   return <View style={styles.container}>
     <View
@@ -71,7 +79,27 @@ export default function TextInputBar() {
       flex: 1,
     }}>
       {String(value).trim() !== '' ? (
-        <PaperPlaneIcon color={theme.sendIconColor} />
+        <TouchableOpacity
+          onPress={() => {
+            const currentDate = new Date();
+            const formattedTime = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes.toString().padStart(2, '0')}`;
+            setData((prev) => [...prev, 
+              {
+                id: last.id + 1,
+                image: false,
+                system: false,
+                fromMe: true,
+                read: true,
+                received: true,
+                text: value,
+              }
+            ])
+            setLast(data.slice(-1))
+            setValue("")
+          }}
+        >
+          <PaperPlaneIcon color={theme.sendIconColor} />
+        </TouchableOpacity>
       ) : (
         <MaterialIcons name="mic" size={24} color={theme.sendIconColor} />
       )}
