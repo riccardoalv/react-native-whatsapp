@@ -92,13 +92,13 @@ export default function ChatScreen() {
           numColumns={1}
           data={data}
           keyExtractor={(item) => { item.id }}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
-              <Message message={item} />
+              <Message message={item} index={index}/>
             );
           }}
           contentContainerStyle={{
-            marginTop: 50,
+            marginTop: 40,
           }}
         />
         <TextInputBar />

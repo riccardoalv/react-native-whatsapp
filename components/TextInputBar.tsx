@@ -84,8 +84,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: "transparent",
+    elevation: 5,
   },
   textInput: {
     flex: 6,
