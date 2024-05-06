@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   textInput: {
-    flex: 7,
+    flex: 6,
     flexDirection: "row",
     elevation: 1,
     padding: 8,
