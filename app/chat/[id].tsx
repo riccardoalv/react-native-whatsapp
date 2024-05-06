@@ -10,6 +10,9 @@ import Message from '@/components/Message';
 import TextInputBar from '@/components/TextInputBar';
 import Colors from '@/constants/Colors';
 import { useRef, useState } from 'react';
+import ThreeDotsMenu from '@/components/ThreeDotsMenu';
+import { MenuOption, MenuProvider } from 'react-native-popup-menu';
+import { menuOptions } from '@/styles/threeDots/menuOption';
 
 export default function ChatScreen() {
 
@@ -77,7 +80,17 @@ export default function ChatScreen() {
             }}>
               <TouchableOpacity><MaterialCommunityIcons style={{ paddingRight: 20 }} name="video-outline" size={24} color={theme.tabBar.icon} /></TouchableOpacity>
               <TouchableOpacity><MaterialIcons style={{ paddingRight: 20 }} name="call" size={24} color={theme.tabBar.icon} /></TouchableOpacity>
-              <TouchableOpacity><MaterialCommunityIcons name="dots-vertical" size={24} color={theme.tabBar.icon} /></TouchableOpacity>
+              <ThreeDotsMenu>
+                <MenuOption onSelect={ () => {
+                  router.push(`/description/${params.id}`)
+                }}
+                text="View contact" customStyles={menuOptions} />
+                <MenuOption text="Media, links, and docs" customStyles={menuOptions} />
+                <MenuOption text="Search" customStyles={menuOptions} />
+                <MenuOption text="Mute notifications" customStyles={menuOptions} />
+                <MenuOption text="Disappering messages" customStyles={menuOptions} />
+                <MenuOption text="Wallpaper" customStyles={menuOptions} />
+              </ThreeDotsMenu>
             </View>
           )
         }}
