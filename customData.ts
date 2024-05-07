@@ -46,5 +46,11 @@ const exampleChat = [
   { id: 9, hour: "10:32", image: require("./assets/images/whatsapp/fake/download2.jpeg"), system: false, fromMe: false, read: true, received: true, text: "", },
 ]
 
+const myProfile = {
+  name: "Ricardo Alves",
+  phone: "+55 (99) 99999-9999",
+  about: "Hey there! I am using WhatsApp",
+  profileImage: require("./assets/images/whatsapp/profiles/no-profile.png"),
+}
 
-export { chatData, archivedMessages, exampleChat }
+export { chatData, archivedMessages, exampleChat, myProfile }
