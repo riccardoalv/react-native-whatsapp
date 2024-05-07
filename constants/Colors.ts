@@ -36,6 +36,9 @@ export default {
       border: "#E7E7E7",
     },
     sendIconColor: "white",
+    popupMenu: {
+      background: "#ffffff",
+    },
   },
   dark: {
     text: '#fff',
