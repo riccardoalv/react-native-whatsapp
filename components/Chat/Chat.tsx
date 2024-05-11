@@ -1,15 +1,11 @@
-import { Modal, Alert, FlatList, Image, Pressable, StyleSheet, TouchableOpacity, useColorScheme, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { FlatList, StyleSheet, TouchableOpacity, useColorScheme, } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-import { Dispatch, SetStateAction, useState } from 'react';
-import UnreadNotification from "@/components/UnreadNotification"
-import ProfileImage from './ProfileImage';
+import { useState } from 'react';
+import { UnreadNotification, ProfileImage, UserModal } from "@/components/"
 
 import Colors from '@/constants/Colors';
-import { ChatIcon } from '@/assets/images/whatsapp/icons';
-import UserModal from "@/components/UserModal"
 
 interface ChatProps {
   data: any;
@@ -28,7 +24,7 @@ export default function Chat({ data, scroll }: ChatProps) {
 
   return (
     <View>
-      <UserModal user={selectedUser} modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+      <UserModal user={selectedUser} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <FlatList
         scrollEnabled={scroll}
         numColumns={1}
