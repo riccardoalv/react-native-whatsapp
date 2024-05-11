@@ -39,6 +39,7 @@ export default {
     popupMenu: {
       background: "#ffffff",
     },
+    selected: "green",
   },
   dark: {
     text: '#fff',
@@ -80,5 +81,6 @@ export default {
     popupMenu: {
       background: "#121B22",
     },
+    selected: "green",
   },
 };

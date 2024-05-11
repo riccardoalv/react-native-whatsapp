@@ -4,10 +4,11 @@ import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 
-import {Chat} from '@/components';
+import { Chat } from '@/components';
 import { useState } from 'react';
 
 import { chatData } from "@/customData"
+import sizes from '@/constants/sizes';
 
 export default function ChatScreen() {
   const router = useRouter();
@@ -49,7 +50,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 10,
   },
   archivedMessages: {
     width: "100%",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
+    paddingVertical: 1 + sizes.chat.containerHorizontalPadding,
+    paddingHorizontal: 12 + sizes.chat.containerHorizontalPadding,
   },
 });
