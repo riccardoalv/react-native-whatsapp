@@ -5,12 +5,9 @@ import { Stack, useLocalSearchParams, useNavigation, useRouter } from 'expo-rout
 import { exampleChat, chatData } from '@/customData';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import ProfileImage from '@/components/ProfileImage';
-import Message from '@/components/Message';
-import TextInputBar from '@/components/TextInputBar';
 import Colors from '@/constants/Colors';
 import { useRef, useState } from 'react';
-import ThreeDotsMenu from '@/components/ThreeDotsMenu';
+import { ThreeDotsMenu, ProfileImage, Message, TextInputBar } from '@/components/';
 import { MenuOption, MenuProvider } from 'react-native-popup-menu';
 import { menuOptions } from '@/styles/threeDots/menuOption';
 
@@ -81,10 +78,10 @@ export default function ChatScreen() {
               <TouchableOpacity><MaterialCommunityIcons style={{ paddingRight: 20 }} name="video-outline" size={24} color={theme.tabBar.icon} /></TouchableOpacity>
               <TouchableOpacity><MaterialIcons style={{ paddingRight: 20 }} name="call" size={24} color={theme.tabBar.icon} /></TouchableOpacity>
               <ThreeDotsMenu>
-                <MenuOption onSelect={ () => {
+                <MenuOption onSelect={() => {
                   router.push(`/description/${params.id}`)
                 }}
-                text="View contact" customStyles={menuOptions} />
+                  text="View contact" customStyles={menuOptions} />
                 <MenuOption text="Media, links, and docs" customStyles={menuOptions} />
                 <MenuOption text="Search" customStyles={menuOptions} />
                 <MenuOption text="Mute notifications" customStyles={menuOptions} />
@@ -106,19 +103,19 @@ export default function ChatScreen() {
       >
         <KeyboardAvoidingView
           style={{
-          flex: 1,
-        }}>
+            flex: 1,
+          }}>
           <FlatList
             ref={flatListRef}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
-            onContentSizeChange={() => flatListRef.current.scrollToEnd() }
+            onContentSizeChange={() => flatListRef.current.scrollToEnd()}
             numColumns={1}
             data={data}
             keyExtractor={(item) => { item.id }}
             renderItem={({ item, index }) => {
               return (
-                <Message data={data} message={item} index={index}/>
+                <Message data={data} message={item} index={index} />
               );
             }}
             contentContainerStyle={{
@@ -126,7 +123,7 @@ export default function ChatScreen() {
             }}
           />
         </KeyboardAvoidingView>
-        <TextInputBar data={data} setData={setData}/>
+        <TextInputBar data={data} setData={setData} />
       </ImageBackground>
     </View>
   );

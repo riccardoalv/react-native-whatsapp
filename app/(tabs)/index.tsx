@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 
-import Chat from '@/components/Chat';
+import {Chat} from '@/components';
 import { useState } from 'react';
 
 import { chatData } from "@/customData"
@@ -29,7 +29,7 @@ export default function ChatScreen() {
             <View style={{ flexDirection: "row", }} >
               <MaterialIcons name="archive" size={24} color={theme.icon} />
               <Text style={{
-                fontSize: 17,
+                fontSize: 16,
                 fontWeight: "500",
                 marginLeft: 20,
               }}

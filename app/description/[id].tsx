@@ -5,9 +5,8 @@ import { Stack, useLocalSearchParams, useNavigation, useRouter } from 'expo-rout
 import { exampleChat, chatData } from '@/customData';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import ProfileImage from '@/components/ProfileImage';
 import Colors from '@/constants/Colors';
-import ThreeDotsMenu from '@/components/ThreeDotsMenu';
+import {ThreeDotsMenu, ProfileImage} from '@/components/';
 import { MenuOption } from 'react-native-popup-menu';
 import { menuOptions } from '@/styles/threeDots/menuOption';
 

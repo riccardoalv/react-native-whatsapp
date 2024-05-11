@@ -5,7 +5,7 @@ import { Stack, useLocalSearchParams, useNavigation, useRouter } from 'expo-rout
 import { myProfile } from '@/customData';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import ProfileImage from '@/components/ProfileImage';
+import { ProfileImage } from '@/components/';
 import Colors from '@/constants/Colors';
 
 

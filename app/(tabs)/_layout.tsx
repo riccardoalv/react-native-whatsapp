@@ -1,14 +1,13 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs, useRouter } from 'expo-router';
-import { Pressable, StyleSheet, Text, View, useColorScheme } from 'react-native';
+import { Tabs, useRouter } from 'expo-router';
+import { View, useColorScheme } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 import Colors from '@/constants/Colors';
 
 import { ChatIcon, CommunitiesIcon, UpdatesIcon } from "../../assets/images/whatsapp/icons"
-import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
-import ThreeDotsMenu from '@/components/ThreeDotsMenu';
+import { MenuOption } from 'react-native-popup-menu';
+import { ThreeDotsMenu } from '@/components/';
 import { menuOptions } from '@/styles/threeDots/menuOption';
 
 export default function TabLayout() {

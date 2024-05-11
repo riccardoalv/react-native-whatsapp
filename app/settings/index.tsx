@@ -5,12 +5,8 @@ import { Stack, useLocalSearchParams, useNavigation, useRouter } from 'expo-rout
 import { myProfile } from '@/customData';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import ProfileImage from '@/components/ProfileImage';
+import {ProfileImage} from '@/components/';
 import Colors from '@/constants/Colors';
-import ThreeDotsMenu from '@/components/ThreeDotsMenu';
-import { MenuOption } from 'react-native-popup-menu';
-import { menuOptions } from '@/styles/threeDots/menuOption';
-import { ChatIcon } from '@/assets/images/whatsapp/icons';
 
 interface FieldProps {
   title: String,
@@ -26,9 +22,10 @@ function Field({ title, description, icon }: FieldProps) {
     <TouchableOpacity style={{
       flexDirection: "row",
       alignItems: "center",
-      margin: 20,
+      marginVertical: 20,
       backgroundColor: theme.background,
       justifyContent: "center",
+      marginLeft: 10,
     }}>
       {icon}
       <View style={{
@@ -36,7 +33,7 @@ function Field({ title, description, icon }: FieldProps) {
         marginLeft: 20,
       }}>
         <Text style={{
-          fontSize: 18,
+          fontSize: 16,
           color: theme.text
         }}>{title}</Text>
         {description ?
@@ -89,7 +86,7 @@ export default function SettingsScreen() {
         onPress={() => {
           router.push("/settings/profile")
         }}
-      style={{
+        style={{
           flexDirection: "row",
           alignItems: "center",
           marginBottom: 30,
@@ -102,31 +99,31 @@ export default function SettingsScreen() {
       </TouchableOpacity>
       <Field title="Account" description="Security notifications, change number" icon={
         <MaterialCommunityIcons name="key-outline" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="Privacy" description="Block contacts, disappearing messages" icon={
         <MaterialIcons name="lock-outline" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="Chats" description="Theme, wallapapers, chat history" icon={
         <MaterialIcons name="chat-bubble-outline" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="Notifications" description="Message, group & call tones" icon={
         <MaterialCommunityIcons name="bell-outline" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="Storage and data" description="Network usage, auto-download" icon={
         <MaterialCommunityIcons name="chart-donut" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="App language" description="English (device's language)" icon={
         <MaterialCommunityIcons name="earth" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="Help" description="Help center, contact us, privacy policy" icon={
         <MaterialIcons name="help-outline" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="Invite a friend" description="" icon={
         <MaterialIcons name="people-outline" size={26} color={theme.grey} />
-        }/>
+      } />
       <Field title="App updates" description="" icon={
         <MaterialIcons name="smartphone" size={26} color={theme.grey} />
-        }/>
+      } />
     </ScrollView>
   );
 }
