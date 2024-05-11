@@ -11,11 +11,13 @@ interface TextInputBarProps {
   setData: any,
 }
 
-export default function TextInputBar({data, setData}: TextInputBarProps) {
+export default function TextInputBar({ data, setData }: TextInputBarProps) {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme ?? "dark"]
 
   const [value, setValue] = useState('')
+
+  const [focused, setFocused] = useState(false)
 
   const [last, setLast] = useState(data.slice(-1))
 
@@ -44,28 +46,30 @@ export default function TextInputBar({data, setData}: TextInputBarProps) {
           value={value}
         />
       </View>
-      <View style={{
-        flexDirection: "row",
-      }}>
-        <TouchableOpacity>
+      {String(value).trim() !== '' ? "" : (
+        <View style={{
+          flexDirection: "row",
+        }}>
+          <TouchableOpacity>
+            <MaterialCommunityIcons
+              name="paperclip"
+              size={24}
+              color={theme.lightGrey}
+              style={{
+                paddingHorizontal: 10,
+              }}
+            />
+          </TouchableOpacity>
           <MaterialCommunityIcons
-            name="paperclip"
+            name="camera-outline"
             size={24}
             color={theme.lightGrey}
             style={{
               paddingHorizontal: 10,
             }}
           />
-        </TouchableOpacity>
-        <MaterialCommunityIcons
-          name="camera-outline"
-          size={24}
-          color={theme.lightGrey}
-          style={{
-            paddingHorizontal: 10,
-          }}
-        />
-      </View>
+        </View>
+      )}
     </View>
     <View style={{
       backgroundColor: theme.green,
@@ -83,16 +87,16 @@ export default function TextInputBar({data, setData}: TextInputBarProps) {
           onPress={() => {
             const currentDate = new Date();
             const formattedTime = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes.toString().padStart(2, '0')}`;
-            setData((prev) => [...prev, 
-              {
-                id: last.id + 1,
-                image: false,
-                system: false,
-                fromMe: true,
-                read: true,
-                received: true,
-                text: value,
-              }
+            setData((prev) => [...prev,
+            {
+              id: last.id + 1,
+              image: false,
+              system: false,
+              fromMe: true,
+              read: true,
+              received: true,
+              text: value,
+            }
             ])
             setLast(data.slice(-1))
             setValue("")
