@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, useColorScheme } from 'react-native';
+import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 
@@ -14,10 +14,16 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({ onPress, iconName }) => {
   const theme = Colors[colorScheme ?? "dark"];
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={styles.tabBarIcon}>
       <MaterialCommunityIcons name={iconName} size={24} color={theme.tabBar.icon} />
     </TouchableOpacity>
   );
 }
 
 export default HeaderButton;
+
+const styles = StyleSheet.create({
+  tabBarIcon: {
+    marginHorizontal: 10,
+  }
+});
