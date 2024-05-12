@@ -29,6 +29,18 @@ export default function ChatScreen() {
 
   const [myData, setMyData] = useState(chatData)
 
+  function sortData(){
+    setMyData((data) => data.sort((a, b) => {
+      if (a.pinned && !b.pinned) {
+        return -1;
+      }
+      if (!a.pinned && b.pinned) {
+        return 1;
+      }
+      return 0;
+    }));
+  }
+
   useEffect(() => {
     if (selectedUser.length > 0) {
       navigation.setOptions({
@@ -39,7 +51,7 @@ export default function ChatScreen() {
             alignItems: "center",
           }}>
             <HeaderButton iconName="pin-off-outline" onPress={() =>{
-                setMyData(myData.map((item) => {
+                setMyData((data) => data.map((item) => {
                   if (selectedUser.includes(item.id)) {
                     setSelectedUser([])
                     return { ...item, pinned: !item.pinned };
@@ -47,6 +59,7 @@ export default function ChatScreen() {
                   setSelectedUser([])
                   return item;
                 }));
+                sortData()
             }}/>
             <HeaderButton iconName="trash-can-outline" onPress={()=>{
                 setMyData(myData.filter((item) => !selectedUser.includes(item.id)));
