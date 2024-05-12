@@ -53,31 +53,6 @@ export default function TabLayout() {
               borderRadius: 50,
             }}
           />,
-          headerTitle: "WhatsApp",
-          headerRight: () =>
-            <View
-              style={{
-                flexDirection: "row",
-              }}>
-              <MaterialCommunityIcons style={{ marginHorizontal: 10 }} name="camera-outline" size={24} color={theme.header.icon} />
-              <MaterialIcons name="search" style={{ marginHorizontal: 10 }} size={24} color={theme.header.icon} />
-              <ThreeDotsMenu>
-                <MenuOption text="New group" customStyles={menuOptions} />
-                <MenuOption text="New broadcast" customStyles={menuOptions} />
-                <MenuOption text="Linked devices" customStyles={menuOptions} />
-                <MenuOption text="Starred Messages" customStyles={menuOptions} />
-                <MenuOption
-                  onSelect={() => {
-                    router.push('/settings/')
-                  }}
-                  text="Settings"
-                  customStyles={menuOptions} />
-              </ThreeDotsMenu>
-            </View>,
-          headerTitleStyle: {
-            color: theme.header.title,
-            fontSize: 25,
-          }
         }}
       />
       <Tabs.Screen
