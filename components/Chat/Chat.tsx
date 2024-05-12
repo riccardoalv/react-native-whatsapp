@@ -9,15 +9,16 @@ import sizes from '@/constants/sizes';
 
 interface ChatProps {
   data: any[];
+  selectedUser: any[];
+  setSelectedUser: any;
 }
 
-export default function Chat({ data }: ChatProps) {
+export default function Chat({ data, selectedUser, setSelectedUser }: ChatProps) {
   const router = useRouter();
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme ?? "dark"];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<number[]>([]);
   const [modalUser, setModalUser] = useState<any>({});
 
   const handleLongPress = (itemId: number) => {

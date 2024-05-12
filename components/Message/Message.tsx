@@ -17,7 +17,6 @@ export default function Message({ message, index, data }: MessageProps) {
   let sizes = {}
 
   message.image ? sizes = Image.resolveAssetSource(message.image) : ""
-  console.log(sizes.width)
 
   return (
     <View

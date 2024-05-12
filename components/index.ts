@@ -5,6 +5,7 @@ import TextInputBar from "./TextInputBar/TextInputBar";
 import ThreeDotsMenu from "./ThreeDotsMenu/ThreeDotsMenu";
 import UnreadNotification from "./UnreadNotification";
 import UserModal from "./UserModal";
+import HeaderButton from "./HeaderButton/HeaderButton";
 
 export {
   Chat,
@@ -13,5 +14,6 @@ export {
   TextInputBar,
   ThreeDotsMenu,
   UnreadNotification,
-  UserModal
+  UserModal,
+  HeaderButton
 }
