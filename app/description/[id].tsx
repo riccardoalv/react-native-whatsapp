@@ -6,7 +6,7 @@ import { exampleChat, chatData } from '@/customData';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
-import {ThreeDotsMenu, ProfileImage} from '@/components/';
+import { ThreeDotsMenu, ProfileImage } from '@/components/';
 import { MenuOption } from 'react-native-popup-menu';
 import { menuOptions } from '@/styles/threeDots/menuOption';
 

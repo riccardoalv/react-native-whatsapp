@@ -17,6 +17,8 @@ export default function ChatScreen() {
 
   const theme = Colors[colorScheme ?? "dark"];
 
+  const [selectedUser, setSelectedUser] = useState({})
+
   const [hasArchivedMessages, sethasArchivedMessages] = useState(true)
   const newArchivedMessagesCount = 2
 
@@ -39,7 +41,7 @@ export default function ChatScreen() {
             <Text style={{ color: theme.green, fontSize: 12 }}>{newArchivedMessagesCount ? newArchivedMessagesCount : ""}</Text>
           </TouchableOpacity>
         ) : ""}
-        <Chat data={chatData} scroll={false} />
+        <Chat data={chatData} />
       </ScrollView>
     </View>
   );
